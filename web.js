@@ -5,11 +5,7 @@ app.use(express.logger());
 
 app.get('/', function(request, response) {
   var resp = new Buffer (100);
-  fs.readFileSync('./index.html', function (err, data) {
-    if (err) throw err;
-    var len = resp.write (data, 'utf-8');
-    console.log("Read " + len + " bytes");
-  });
+  resp = fs.readFileSync('./index.html');
   response.send(resp.toString('utf-8'));
 });
 
